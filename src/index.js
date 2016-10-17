@@ -101,7 +101,8 @@ const CurrencyInput = React.createClass({
         event.preventDefault();
         let maskedValue = mask(event.target.value, this.props.precision, this.props.decimalSeparator, this.props.thousandSeparator);
         this.setState({maskedValue: maskedValue});
-        this.props.onChange(maskedValue);
+        const rawValue = maskedValue.replace(this.props.thousandSeparator, '').replace(this.props.decimalSeparator, '.');
+        this.props.onChange(rawValue);
     },
 
 
